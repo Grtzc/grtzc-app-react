@@ -53,7 +53,7 @@ function App() {
         <div className='container'>
           <div className='row'>
             <div className='col text-center mb-5'>
-              <img alt='logo' src={logo} width="128" /><br/>
+              <img alt='logo' src={logo} width="128" /><br />
               <h1>Global & Realtime Timezone Converter</h1>
             </div>
           </div>
@@ -91,6 +91,9 @@ function App() {
           </div>
         </div>
       </header>
+      <footer className='footer'>
+        <p>Author: Hassan Behzadian</p>
+      </footer>
     </div>
   );
 }
