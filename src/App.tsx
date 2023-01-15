@@ -1,4 +1,5 @@
 import './App.css';
+import logo from './logo.png';
 import timezones from './Timezones';
 import React, { useState } from 'react';
 import Timezone from './Timezone';
@@ -50,6 +51,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='container'>
+          <div className='row'>
+            <div className='col text-center mb-5'>
+              <img alt='logo' src={logo} width="128" /><br/>
+              <h1>Global & Realtime Timezone Converter</h1>
+            </div>
+          </div>
           <div className='row'>
             <div className='col-3 text-end'>Your zone:</div>
             <div className='col-9 text-start'>
