@@ -92,7 +92,8 @@ function App() {
         </div>
       </header>
       <footer className='footer'>
-        Author: Hassan Behzadian. Version: 0.1@230115
+        Author: Hassan Behzadian. Version: 0.1@230115<br/>
+        Any idea? Please create an issue at <a href='https://github.com/Grtzc/grtzc-app-react/' rel='noreferrer noopener' target='_blank'>https://github.com/Grtzc/grtzc-app-react/</a>
       </footer>
     </div>
   );
