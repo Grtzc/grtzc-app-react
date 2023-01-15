@@ -60,7 +60,7 @@ function App() {
           <div className='row'>
             <div className='col-3 text-end'>Your zone:</div>
             <div className='col-9 text-start'>
-              <select title='select origin timezone' name='OriginTimeZoneSelect' onChange={originZoneChanged}>
+              <select title='select origin timezone' name='OriginTimeZoneSelect' onChange={originZoneChanged} className='w-100'>
                 <option key="default" value={currentTimeZone().Name}>Auto detect ({currentTimeZone().Name})</option>
                 {timezoneOptions}
               </select>
@@ -75,7 +75,7 @@ function App() {
 
           {destTimeZones.map(x =>
             <div className='row'>
-              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name}</div>
+              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name.replace('/',' ')}</div>
               <div className='col-9 text-start border-bottom-1 border-white'>{calcTime(x)}</div>
             </div>
           )}
@@ -83,7 +83,7 @@ function App() {
           <div className='row'>
             <div className='col-3 text-end'>Add target zone:</div>
             <div className='col-9 text-start'>
-              <select title='Destination time zone' name='DestTimeZoneSelect' onChange={targetZoneChanged}>
+              <select title='Destination time zone' name='DestTimeZoneSelect' onChange={targetZoneChanged} className='w-100'>
                 <option>Select destination time zone</option>
                 {timezoneOptions}
               </select>
