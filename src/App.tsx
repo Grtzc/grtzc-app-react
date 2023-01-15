@@ -92,7 +92,7 @@ function App() {
         </div>
       </header>
       <footer className='footer'>
-        <p>Author: Hassan Behzadian</p>
+        Author: Hassan Behzadian. Version: 0.1@230115
       </footer>
     </div>
   );
