@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Global Realtime Timezone Converter (GRTZC)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project aims to simplify converting between different timezones. The idea of this project comes from difficulties of using common timezone converter websites. I tried to use them for example converting time of CET to IRST and vice versa, but they seemed to be very complicated. So I decided to create a very simple but yet powerfull application to convert a timezone to many other timezones in realtime without querying server and unnecessary extra information.
 
-## Available Scripts
+## How it is working?
 
-In the project directory, you can run:
+For converting timezone, simply enter desired time (or current time by default) and then choose target timezone or timezones to see converted time in those timezones instantly.
+You can also selected origin time's timezone if you want to convert timezone of in other timzone of your current timezone.
 
-### `npm start`
+## Version and Future
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Application is currently in the most early version (0.1) with very limited capabilities and poor design.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+But there are a lot of ideas to add new features and make it beatiful and user friendly.
 
-### `npm test`
+Current roadmap is:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Make page more beautiful and redisign it.
+- Use better component for time picker, so all style and usability errors will be vanished.
+- Use better drop down component for choosing timezones, so anyone can search for each timezone instead of searching it
+- Use better naming for each timezone, so they will be searchable using country, city, key and more
+- Add support for picking date to be converted specially for checking daylight savings (current data is for 2 weeks ago)
+- Group timezones by Offset and Key to limit number of options
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### REACT
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I used React, the most famous client side library to create this app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### WEBPACK
 
-### `npm run eject`
+While, I used create-react-app to create initial version of this app, there is plan to execute `eject` command and switch to webpack.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### TYPESCRIPT
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Typescript is the most growing language in the client and server side application. Thanks to Microsoft, Typescript brings type safty and other bunch of C# language to the most popular scripting language of the world, JavaScript.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### AWS LAMBDA
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+There is plans to use AWS Lambda for querying and caching timezones data for supporting dates.
 
-## Learn More
+## Contributers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Hassan Behzadian](https://github.com/behzadian) as Product Owner and Developer
+- [Ali Behzadian](https://github.com/alibehzadian) as Reviewer
+- [Reza Behzadian](https://github.com/rezabehzadian) as Developer
