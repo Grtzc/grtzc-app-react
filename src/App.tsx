@@ -1,4 +1,6 @@
 import './App.css';
+import './TimePickerExtra.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.png';
 import timezones from './Timezones';
 import React, { useState } from 'react';
@@ -45,54 +47,56 @@ function App() {
     const originTimeInSeconds = parseTime(originTime);
     const targetTimeInSeconds = originTimeInSeconds + tz.OffsetInSeconds - originZone.OffsetInSeconds;
     const targetTime = TimeUtility.formatTime(targetTimeInSeconds).substring(1);
-    return targetTime;
+    const offsetTime = TimeUtility.formatTime(tz.OffsetInSeconds);
+    return `${targetTime} (${offsetTime})`;
   }
   return (
     <div className="App">
       <header className="App-header">
-        <div className='container'>
+        <div className='container mb-5'>
           <div className='row'>
             <div className='col text-center mb-5'>
               <img alt='logo' src={logo} width="128" /><br />
               <h1>Global & Realtime Timezone Converter</h1>
+              <p className='small'><em>Convert any timezone to any other timezone instantly, just add target timezones by selecting them</em></p>
             </div>
           </div>
-          <div className='row'>
-            <div className='col-3 text-end'>Your zone:</div>
+          <div className='row m-2'>
+            <div className='col-3 text-end'>Origin zone:</div>
             <div className='col-9 text-start'>
-              <select title='select origin timezone' name='OriginTimeZoneSelect' onChange={originZoneChanged} className='w-100'>
+              <select title='select origin timezone' name='OriginTimeZoneSelect' onChange={originZoneChanged} className='w-100 bg-info-subtle rounded'>
                 <option key="default" value={currentTimeZone().Name}>Auto detect ({currentTimeZone().Name})</option>
                 {timezoneOptions}
               </select>
             </div>
           </div>
-          <div className='row'>
-            <div className='col-3 text-end'>Desired time:</div>
+          <div className='row m-2'>
+            <div className='col-3 text-end'>Origin time:</div>
             <div className='col-9 text-start'>
               <TimePicker value={originTime} onChange={setOriginTime} /> in {originZone.Name}
             </div>
           </div>
 
-          {destTimeZones.map(x =>
-            <div className='row'>
-              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name.replace('/',' ')}</div>
-              <div className='col-9 text-start border-bottom-1 border-white'>{calcTime(x)}</div>
-            </div>
-          )}
-
-          <div className='row'>
+          <div className='row m-2'>
             <div className='col-3 text-end'>Add target zone:</div>
             <div className='col-9 text-start'>
-              <select title='Destination time zone' name='DestTimeZoneSelect' onChange={targetZoneChanged} className='w-100'>
+              <select title='Destination time zone' name='DestTimeZoneSelect' onChange={targetZoneChanged} className='w-100 rounded bg-info-subtle'>
                 <option>Select destination time zone</option>
                 {timezoneOptions}
               </select>
             </div>
           </div>
+
+          {destTimeZones.map(x =>
+            <div className='row m-2'>
+              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name.replace('/',' ')}</div>
+              <div className='col-9 text-start border-bottom-1 border-white'>{calcTime(x)}</div>
+            </div>
+          )}
         </div>
       </header>
-      <footer className='footer'>
-        Author: Hassan Behzadian. Version: 0.1@230115<br/>
+      <footer className='footer pb-3'>
+        Author: Hassan Behzadian. Version: 0.1.1@230124<br/>
         Any idea? Please create an issue at <a href='https://github.com/Grtzc/grtzc-app-react/' rel='noreferrer noopener' target='_blank'>https://github.com/Grtzc/grtzc-app-react/</a>
       </footer>
     </div>
