@@ -1,16 +1,19 @@
 import './App.css';
 import './TimePickerExtra.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { TimePicker } from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 import logo from './logo.png';
 import timezones from './Timezones';
 import React, { useState } from 'react';
 import Timezone from './Timezone';
-import TimePicker, { TimePickerValue } from 'react-time-picker';
 import TimeUtility from './TimeUtility';
 
 function App() {
   const now = new Date();
-  const [originTime, setOriginTime] = useState<TimePickerValue>(`${TimeUtility.leadNumber(now.getHours())}:${TimeUtility.leadNumber(now.getMinutes())}`);
+  dayjs.extend(customParseFormat)
+  const [originTime, setOriginTime] = useState<string>(`${TimeUtility.leadNumber(now.getHours())}:${TimeUtility.leadNumber(now.getMinutes())}`);
   const [originZone, setOriginZone] = useState<Timezone>(currentTimeZone());
   const [destTimeZones, setDestTimeZones] = useState<Timezone[]>([]);
   const timezoneOptions = timezones
@@ -22,13 +25,19 @@ function App() {
       return;
     setOriginZone(tz);
   }
+  
   function targetZoneChanged(e: React.ChangeEvent<HTMLSelectElement>) {
     var tz = timezones.find(x => x.Name === e.target.value);
     if (tz === undefined)
       return;
     setDestTimeZones([...destTimeZones, tz]);
   }
-  function parseTime(time: TimePickerValue): number {
+
+  function originTimeChanged(time: dayjs.Dayjs | null, timeString: string) {
+    setOriginTime(timeString);
+  }
+
+  function parseTime(time: string): number {
     if (!time)
       return NaN;
     var parts = time.toString().split(':');
@@ -73,7 +82,7 @@ function App() {
           <div className='row m-2'>
             <div className='col-3 text-end'>Origin time:</div>
             <div className='col-9 text-start'>
-              <TimePicker value={originTime} onChange={setOriginTime} /> in {originZone.Name}
+              <TimePicker defaultValue={dayjs(originTime, 'HH:mm')} allowClear={false} format='HH:mm' minuteStep={5} use12Hours={false} placeholder='' onChange={originTimeChanged} /> in {originZone.Name}
             </div>
           </div>
 
@@ -96,7 +105,8 @@ function App() {
         </div>
       </header>
       <footer className='footer pb-3'>
-        Author: Hassan Behzadian. Version: 0.1.1@230124<br/>
+        Author: Hassan Behzadian.<br/>
+        Version: 0.2.0@230126<br/>
         Any idea? Please create an issue at <a href='https://github.com/Grtzc/grtzc-app-react/' rel='noreferrer noopener' target='_blank'>https://github.com/Grtzc/grtzc-app-react/</a>
       </footer>
     </div>
