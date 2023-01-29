@@ -2,7 +2,7 @@
 
 This project aims to simplify converting between different timezones. The idea of this project comes from difficulties of using common timezone converter websites. I tried to use them for example converting time of CET to IRST and vice versa, but they seemed to be very complicated. So I decided to create a very simple but yet powerfull application to convert a timezone to many other timezones in realtime without querying server and unnecessary extra information.
 
-## How it is working?
+## How it works?
 
 For converting timezone, simply enter desired time (or current time by default) and then choose target timezone or timezones to see converted time in those timezones instantly.
 You can also selected origin time's timezone if you want to convert timezone of in other timzone of your current timezone.
