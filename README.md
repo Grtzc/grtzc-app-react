@@ -11,13 +11,13 @@ You can also selected origin time's timezone if you want to convert timezone of 
 
 Application is currently in the most early version (0.1) with very limited capabilities and poor design.
 
-But there are a lot of ideas to add new features and make it beatiful and user friendly.
+But there are lots of ideas to for new features to make it more beautiful and user-friendly.
 
-Current roadmap is:
+The roadmap is:
 
-- Make page more beautiful and redisign it.
-- Use better component for time picker, so all style and usability errors will be vanished.
-- Use better drop down component for choosing timezones, so anyone can search for each timezone instead of searching it
+- Redesign the app screen
+- Use a better component for the time picker, so all the style and usability errors will vanish.
+- Use better drop down component for choosing timezones, so anyone can search for each timezone instead of picking it manually
 - Use better naming for each timezone, so they will be searchable using country, city, key and more
 - Add support for picking date to be converted specially for checking daylight savings (current data is for 2 weeks ago)
 - Group timezones by Offset and Key to limit number of options
