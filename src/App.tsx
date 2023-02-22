@@ -19,14 +19,14 @@ function App() {
   const timezoneOptions = timezones
     .sort((x, y) => x.OffsetInSeconds - y.OffsetInSeconds)
     .map((x) => <option key={x.Name} value={x.Name}>{TimeUtility.formatTime(x.OffsetInSeconds)} {x.Name}</option>);
-  function originZoneChanged(e: React.ChangeEvent<HTMLSelectElement>) {
+  function originZoneChanged(e: React.ChangeEvent<HTMLInputElement>) {
     var tz = timezones.find(x => x.Name === e.target.value);
     if (tz === undefined)
       return;
     setOriginZone(tz);
   }
-  
-  function targetZoneChanged(e: React.ChangeEvent<HTMLSelectElement>) {
+
+  function targetZoneChanged(e: React.ChangeEvent<HTMLInputElement>) {
     var tz = timezones.find(x => x.Name === e.target.value);
     if (tz === undefined)
       return;
@@ -71,12 +71,12 @@ function App() {
             </div>
           </div>
           <div className='row m-2'>
+            <datalist id="timezoneOptions">
+              {timezoneOptions}
+            </datalist>
             <div className='col-3 text-end'>Origin zone:</div>
             <div className='col-9 text-start'>
-              <select title='select origin timezone' name='OriginTimeZoneSelect' onChange={originZoneChanged} className='w-100 bg-info-subtle rounded'>
-                <option key="default" value={currentTimeZone().Name}>Auto detect ({currentTimeZone().Name})</option>
-                {timezoneOptions}
-              </select>
+              <input title='Origin time zone' className="form-control" list="timezoneOptions" onChange={originZoneChanged} placeholder={currentTimeZone().Name} />
             </div>
           </div>
           <div className='row m-2'>
@@ -89,24 +89,21 @@ function App() {
           <div className='row m-2'>
             <div className='col-3 text-end'>Add target zone:</div>
             <div className='col-9 text-start'>
-              <select title='Destination time zone' name='DestTimeZoneSelect' onChange={targetZoneChanged} className='w-100 rounded bg-info-subtle'>
-                <option>Select destination time zone</option>
-                {timezoneOptions}
-              </select>
+              <input title='Destination time zone' className="form-control" list="timezoneOptions" onChange={targetZoneChanged} placeholder="Search for desired destination timezone..." />
             </div>
           </div>
 
           {destTimeZones.map(x =>
             <div className='row m-2'>
-              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name.replace('/',' ')}</div>
+              <div className='col-3 text-end border-bottom-1 border-white'>{x.Name.replace('/', ' ')}</div>
               <div className='col-9 text-start border-bottom-1 border-white'>{calcTime(x)}</div>
             </div>
           )}
         </div>
       </header>
       <footer className='footer pb-3'>
-        Author: Hassan Behzadian.<br/>
-        Version: 0.2.0@230126<br/>
+        Author: Hassan Behzadian.<br />
+        Version: 0.2.0@230126<br />
         Any idea? Please create an issue at <a href='https://github.com/Grtzc/grtzc-app-react/' rel='noreferrer noopener' target='_blank'>https://github.com/Grtzc/grtzc-app-react/</a>
       </footer>
     </div>
